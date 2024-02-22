@@ -11,7 +11,6 @@ load_dotenv()
 ## PART 1 - GET NEWS API
 
 news_api = os.getenv("news_api")
-print(news_api)
 
 url = f'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={news_api}'
 response = r.get(url).json()
