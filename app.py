@@ -6,13 +6,19 @@ import tweepy
 from dotenv import load_dotenv
 import os
 
+from datetime import datetime
+
+timestamp = datetime.now()
+formatted_timestamp = timestamp.strftime("%d-%m-%Y %H:%M:%S")
+print(formatted_timestamp)
+
 load_dotenv()
 
 ## PART 1 - GET NEWS API
 
 news_api = os.getenv("news_api")
 
-url = f'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey={news_api}'
+url = f'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={news_api}'
 response = r.get(url).json()
 
 number = random.randint(0, 7)
@@ -74,3 +80,4 @@ response = client.create_tweet(
 )
 print('tweet sent, url:')
 print(f"https://twitter.com/user/status/{response.data['id']}")
+print('---------------------------')
