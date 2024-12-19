@@ -2,6 +2,7 @@ import requests as r
 import json
 import random
 import tweepy
+import feedparser
 
 from dotenv import load_dotenv
 import os
@@ -15,23 +16,21 @@ print(formatted_timestamp)
 load_dotenv()
 
 ## PART 1 - GET NEWS API
+# URL of the RSS feed
+feed_url = "https://www.coindesk.com/arc/outboundfeeds/rss"
+feed = feedparser.parse(feed_url)
+news_list = []
 
-news_api = os.getenv("news_api")
+count = 0
+# Display entries in the feed
+for entry in feed.entries:
+    count+=1
+    content = entry.content
+    news_list.append(content)
 
-url = f'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={news_api}'
-response = r.get(url).json()
 
-number = random.randint(0, 7)
 
-news = []
-
-for i in response['articles']:
-    if i['description'] != None and i['description'] != "[Removed]":
-        #print(i['description'])
-        news.append(i['description'])
-
-tweet_news = news[number]
-print(f'news obtained: {tweet_news}')
+tweet_news = random.choice(news_list)
 
 ### PART 2 - OPEN AI
 
