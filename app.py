@@ -24,13 +24,17 @@ news_list = []
 count = 0
 # Display entries in the feed
 for entry in feed.entries:
+ #   print("{}: Entry Title:".format(count), entry.title)
     count+=1
+  #  print("Entry Link:", entry.link)
+ #   print("Published Date:", entry.published)
     content = entry.content
+ #   print("Summary:", entry.summary)
     news_list.append(content)
 
-
-
 tweet_news = random.choice(news_list)
+#print(tweet_news)
+#print(f'news obtained: {tweet_news}')
 
 ### PART 2 - OPEN AI
 
@@ -49,7 +53,7 @@ response = r.post(
     "messages": [
       {
         "role": "system",
-        "content": "You write tweets based on the news I send you, be as human as possible and be sarcastic when you find appropriate."
+        "content": "You write tweets based on the news I send you, be as human as possible and be sarcastic when you find appropriate. Make sure the tweet is short and concise"
       },
       {
         "role": "user",
@@ -58,6 +62,7 @@ response = r.post(
     ]}
 )
 # Print the generated response
+print("-----")
 response = response.json()
 tweet_final = (response['choices'][0]['message']['content'])
 print(f'Tweet: {tweet_final}')
