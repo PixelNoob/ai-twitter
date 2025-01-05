@@ -24,17 +24,11 @@ news_list = []
 count = 0
 # Display entries in the feed
 for entry in feed.entries:
- #   print("{}: Entry Title:".format(count), entry.title)
     count+=1
-  #  print("Entry Link:", entry.link)
- #   print("Published Date:", entry.published)
     content = entry.content
- #   print("Summary:", entry.summary)
     news_list.append(content)
 
 tweet_news = random.choice(news_list)
-#print(tweet_news)
-#print(f'news obtained: {tweet_news}')
 
 ### PART 2 - OPEN AI
 
