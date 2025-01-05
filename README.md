@@ -20,7 +20,7 @@ python app.py ## run app2.py or app3.py to run different version
 
 ```app2.py```generates motivational tweets to inspire your audice.
 
-## Factual tweets aboyt supplements
+## Factual tweets about supplements
 
 ```app3.py```generates factual tweets about 100 different supplements.
 
