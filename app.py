@@ -30,20 +30,20 @@ for entry in feed.entries:
 
 tweet_news = random.choice(news_list)
 
-### PART 2 - OPEN AI
+### PART 2 - OPEN AI/Venice
 
 # Set up your OpenAI API key
-api_key = os.getenv("openai")
+api_key = os.getenv("venice")
 
 # Call the OpenAI API to generate a response
 response = r.post(
-    "https://api.openai.com/v1/chat/completions",
+    "https://api.venice.ai/api/v1/chat/completions",
     headers={
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     },
     json={
-    "model": "gpt-3.5-turbo",
+    "model": "llama-3.3-70b",
     "messages": [
       {
         "role": "system",
